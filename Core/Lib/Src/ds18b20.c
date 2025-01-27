@@ -5,14 +5,14 @@
 
 //###################################################################################
 Ds18b20Sensor_t	ds18b20[_DS18B20_MAX_SENSORS];
-
+Ds18b20Sensor_t	temperSensor;
 OneWire_t OneWire;
 uint8_t	  OneWireDevices;
 uint8_t 	TempSensorCount=0; 
 uint8_t		Ds18b20StartConvert=0;
 uint16_t	Ds18b20Timeout=0;
 
-
+static uint_t m_init = 0;
 static uint8_t m_busy = 0;
 static uint8_t m_isConverting = 0;
 
@@ -30,7 +30,34 @@ void	Ds18b20_Init(osPriority Priority)
 }
 #else
 
+uint8_t isTemperSensorInit(){
+	     return m_init;
+}
+bool	Ds18b20_Init(){
+	       m_init = 0;
+	       OneWire_Init(&OneWire,_DS18B20_GPIO ,_DS18B20_PIN);
+	       //OneWire_First(&OneWire);
 
+	       OneWire.ROM_NO[0] = 0x00;
+	       OneWire.ROM_NO[1] = 0x00;
+	       OneWire.ROM_NO[2] = 0x00;
+	       OneWire.ROM_NO[3] = 0x00;
+	       OneWire.ROM_NO[4] = 0x00;
+	       OneWire.ROM_NO[5] = 0x00;
+	       OneWire.ROM_NO[6] = 0x00;
+	       OneWire.ROM_NO[7] = 0x00;
+	       OneWire_GetFullROM(&OneWire, temperSensor.Address);
+
+	       Ds18b20Delay(50);
+	       DS18B20_SetResolution(&OneWire, temperSensor.Address, DS18B20_Resolution_12bits);
+	   	   Ds18b20Delay(50);
+	       DS18B20_DisableAlarmTemperature(&OneWire,  temperSensor.Address);
+
+	       m_init = 1;
+
+	       return true;
+
+}
 
 
 
