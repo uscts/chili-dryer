@@ -35,7 +35,8 @@ uint8_t isTemperSensorInit(){
 }
 
 uint8_t isBusy(){
-	return m_busy;
+	return isBusyLine();
+	//return m_busy;
 }
 
 uint8_t isConverting(){
@@ -637,7 +638,7 @@ uint8_t DS18B20_AllDone(OneWire_t* OneWire)
 
 
 float getCurrentTemper(){
-     return ds18b20[0].Temperature;
+     return temperSensor.Temperature;
 }
 
 
