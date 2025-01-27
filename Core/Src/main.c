@@ -81,7 +81,7 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
-
+float temper = 0.0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -114,24 +114,31 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim3);
 
  Ds18b20_Init();
-
+  Ds18b20_Init_Simple();
   /* USER CODE END 2 */
 
     /* Infinite loop */
   /* USER CODE BEGIN WHILE */
    while (1)
   {
+	    if(!isConverting()){
+	       StartConverting();
+        }
+
+        checkConverting();
+       if(!isConverting()){
+        float temper = getTemper();
+        }
+
+	Ds18b20_ManualConvert();
 
 
-	 Ds18b20_ManualConvert();
-
-	 /*
 	 if(getCurrentTemper() > 50 && getHeaterState() == t_ON){
 		  heaterControll(t_OFF);
 	  }else if (getCurrentTemper() < 45 && getHeaterState() == t_OFF){
 		  heaterControll(t_ON);
 	  }
-	 */
+
 	  //HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
 	  //HAL_Delay(2000);
 
