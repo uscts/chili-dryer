@@ -12,7 +12,7 @@ uint8_t 	TempSensorCount=0;
 uint8_t		Ds18b20StartConvert=0;
 uint16_t	Ds18b20Timeout=0;
 
-static uint_t m_init = 0;
+static uint8_t m_init = 0;
 static uint8_t m_busy = 0;
 static uint8_t m_isConverting = 0;
 
@@ -33,19 +33,28 @@ void	Ds18b20_Init(osPriority Priority)
 uint8_t isTemperSensorInit(){
 	     return m_init;
 }
-bool	Ds18b20_Init(){
+
+uint8_t isBusy(){
+	return m_busy;
+}
+
+uint8_t isConverting(){
+	     return m_isConverting;
+}
+
+bool	Ds18b20_Init_Simple(){
 	       m_init = 0;
 	       OneWire_Init(&OneWire,_DS18B20_GPIO ,_DS18B20_PIN);
 	       //OneWire_First(&OneWire);
 
-	       OneWire.ROM_NO[0] = 0x00;
-	       OneWire.ROM_NO[1] = 0x00;
-	       OneWire.ROM_NO[2] = 0x00;
-	       OneWire.ROM_NO[3] = 0x00;
-	       OneWire.ROM_NO[4] = 0x00;
-	       OneWire.ROM_NO[5] = 0x00;
-	       OneWire.ROM_NO[6] = 0x00;
-	       OneWire.ROM_NO[7] = 0x00;
+	       OneWire.ROM_NO[0] = 0x28;
+	       OneWire.ROM_NO[1] = 0x90;
+	       OneWire.ROM_NO[2] = 0x98;
+	       OneWire.ROM_NO[3] = 0x43;
+	       OneWire.ROM_NO[4] = 0xd4;
+	       OneWire.ROM_NO[5] = 0xe1;
+	       OneWire.ROM_NO[6] = 0x3c;
+	       OneWire.ROM_NO[7] = 0x65;
 	       OneWire_GetFullROM(&OneWire, temperSensor.Address);
 
 	       Ds18b20Delay(50);
@@ -54,19 +63,8 @@ bool	Ds18b20_Init(){
 	       DS18B20_DisableAlarmTemperature(&OneWire,  temperSensor.Address);
 
 	       m_init = 1;
+           return true;
 
-	       return true;
-
-}
-
-
-
-uint8_t isBusy(){
-	return m_busy;
-}
-
-uint8_t isConverting(){
-	return m_isConverting;
 }
 
 
@@ -110,17 +108,22 @@ void Startconverting(){
 	m_busy = 1;
 	DS18B20_StartAll( &OneWire);
 	m_isConverting = 1;
-    m_busy = 0;
+	m_busy = 0;
 
 }
 
 void checkConverting(){
-	m_busy = 1;
+
 	m_isConverting = !DS18B20_AllDone(&OneWire);
-	m_busy = 0;
+
 }
 
+float getTemper(){
 
+	Ds18b20Delay(100);
+	temperSensor.DataIsValid = DS18B20_Read(&OneWire, temperSensor.Address, &temperSensor.Temperature);
+	return temperSensor.Temperature;
+}
 
 bool	Ds18b20_ManualConvert(void)
 {
