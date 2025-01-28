@@ -95,7 +95,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   HAL_Init();
+  HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -110,12 +110,13 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
-  MX_TIM2_Init();
-  MX_TIM3_Init();
+ // MX_USART1_UART_Init();
+ // MX_TIM2_Init();
+ // MX_TIM3_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   SSD1306_Init();
+
 
 
   SSD1306_GotoXY (0,0);
@@ -126,6 +127,56 @@ int main(void)
   HAL_Delay (2000);
 
 
+  SSD1306_GotoXY (0,0);
+  SSD1306_Puts ("HELLO", &Font_11x18, 1);
+  SSD1306_GotoXY (10, 30);
+  SSD1306_Puts ("  WORLD :)", &Font_11x18, 1);
+  SSD1306_UpdateScreen(); //display
+
+  HAL_Delay (2000);
+
+
+  SSD1306_ScrollRight(0,7);  // scroll entire screen
+  HAL_Delay(2000);  // 2 sec
+
+  SSD1306_ScrollLeft(0,7);  // scroll entire screen
+  HAL_Delay(2000);  // 2 sec
+
+  SSD1306_Stopscroll();
+  SSD1306_Clear();
+
+  SSD1306_DrawBitmap(0,0,logo, 128, 64, 1);
+  SSD1306_UpdateScreen();
+
+  HAL_Delay(2000);
+
+  SSD1306_ScrollRight(0x00, 0x0f);    // scroll entire screen right
+
+  HAL_Delay (2000);
+
+  SSD1306_ScrollLeft(0x00, 0x0f);  // scroll entire screen left
+
+  HAL_Delay (2000);
+
+  SSD1306_Scrolldiagright(0x00, 0x0f);  // scroll entire screen diagonal right
+
+  HAL_Delay (2000);
+
+  SSD1306_Scrolldiagleft(0x00, 0x0f);  // scroll entire screen diagonal left
+
+  HAL_Delay (2000);
+
+  SSD1306_Stopscroll();   // stop scrolling. If not done, screen will keep on scrolling
+
+
+  SSD1306_InvertDisplay(1);   // invert the display
+
+  HAL_Delay(2000);
+
+  SSD1306_InvertDisplay(0);  // normalize the display
+//
+
+  HAL_Delay(2000);
 
 
   //HAL_TIM_Base_Start_IT(&htim2);
@@ -143,7 +194,51 @@ int main(void)
   /* USER CODE BEGIN WHILE */
    while (1)
   {
-	   HAL_Delay (2000);
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse1,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse2,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse3,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse4,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse5,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse6,128,64,1);
+		  SSD1306_UpdateScreen();
+
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse7,128,64,1);
+		  SSD1306_UpdateScreen();
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse8,128,64,1);
+		  SSD1306_UpdateScreen();
+
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse9,128,64,1);
+		  SSD1306_UpdateScreen();
+
+
+		  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,horse10,128,64,1);
+		  SSD1306_UpdateScreen();
+
+
+	//   HAL_Delay (2000);
 	/*
 	    if(!isConverting()){
 	       StartConverting();
@@ -251,9 +346,9 @@ static void MX_I2C2_Init(void)
 
   /* USER CODE END I2C2_Init 1 */
   hi2c2.Instance = I2C2;
-  hi2c2.Init.ClockSpeed = 100000;
+  hi2c2.Init.ClockSpeed = 400000;
   hi2c2.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c2.Init.OwnAddress1 = 254;
+  hi2c2.Init.OwnAddress1 = 0;
   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
   hi2c2.Init.OwnAddress2 = 0;
