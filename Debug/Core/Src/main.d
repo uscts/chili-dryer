@@ -1,5 +1,6 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+Core/Src/main.o: ../Core/Src/main.c \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h \
+ ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -36,6 +37,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/test.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/bitmap.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:

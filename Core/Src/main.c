@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <ojtube_log.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -30,10 +31,7 @@
 #include "test.h"
 #include "bitmap.h"
 #include "horse_anim.h"
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
+#include "ojtube_log.h"
 #include <stdio.h>
 /* USER CODE END PTD */
 
@@ -118,19 +116,19 @@ int main(void)
   SSD1306_Init();
 
 
-
+/*
   SSD1306_GotoXY (0,0);
-  SSD1306_Puts ("HELLO", &Font_11x18, 1);
+  SSD1306_Puts ("CROP", &Font_11x18, 1);
   SSD1306_GotoXY (10, 30);
-  SSD1306_Puts ("  WORLD :)", &Font_11x18, 1);
+  SSD1306_Puts ("  DRYER :)", &Font_11x18, 1);
   SSD1306_UpdateScreen(); //display
   HAL_Delay (2000);
 
 
   SSD1306_GotoXY (0,0);
-  SSD1306_Puts ("HELLO", &Font_11x18, 1);
+  SSD1306_Puts ("CROP", &Font_11x18, 1);
   SSD1306_GotoXY (10, 30);
-  SSD1306_Puts ("  WORLD :)", &Font_11x18, 1);
+  SSD1306_Puts ("  DRYER :)", &Font_11x18, 1);
   SSD1306_UpdateScreen(); //display
 
   HAL_Delay (2000);
@@ -177,7 +175,7 @@ int main(void)
 //
 
   HAL_Delay(2000);
-
+  */
 
   //HAL_TIM_Base_Start_IT(&htim2);
 
@@ -195,47 +193,10 @@ int main(void)
    while (1)
   {
 		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse1,128,64,1);
+		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
 		  SSD1306_UpdateScreen();
 
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse2,128,64,1);
-		  SSD1306_UpdateScreen();
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse3,128,64,1);
-		  SSD1306_UpdateScreen();
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse4,128,64,1);
-		  SSD1306_UpdateScreen();
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse5,128,64,1);
-		  SSD1306_UpdateScreen();
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse6,128,64,1);
-		  SSD1306_UpdateScreen();
-
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse7,128,64,1);
-		  SSD1306_UpdateScreen();
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse8,128,64,1);
-		  SSD1306_UpdateScreen();
-
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse9,128,64,1);
-		  SSD1306_UpdateScreen();
-
-
-		  SSD1306_Clear();
-		  SSD1306_DrawBitmap(0,0,horse10,128,64,1);
-		  SSD1306_UpdateScreen();
+		 ;
 
 
 	//   HAL_Delay (2000);
