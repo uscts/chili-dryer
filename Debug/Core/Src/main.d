@@ -20,6 +20,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
@@ -28,7 +29,13 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h \
- ../Core/Inc/heaterController.h ../Core/Inc/main.h
+ ../Core/Inc/heaterController.h ../Core/Inc/main.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ssd1306.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/test.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/bitmap.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -51,6 +58,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
@@ -61,3 +69,9 @@ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h:
 ../Core/Inc/heaterController.h:
 ../Core/Inc/main.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ssd1306.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/test.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/bitmap.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h:

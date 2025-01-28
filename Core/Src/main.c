@@ -25,6 +25,11 @@
 #include "fnd_controller.h"
 #include "ds18b20.h"
 #include "heaterController.h"
+#include "fonts.h"
+#include "ssd1306.h"
+#include "test.h"
+#include "bitmap.h"
+#include "horse_anim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -84,13 +89,13 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
-float temper = 0.0;
+//float temper = 0.0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -110,21 +115,36 @@ float temper = 0.0;
   MX_TIM3_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
+  SSD1306_Init();
+
+
+  SSD1306_GotoXY (0,0);
+  SSD1306_Puts ("HELLO", &Font_11x18, 1);
+  SSD1306_GotoXY (10, 30);
+  SSD1306_Puts ("  WORLD :)", &Font_11x18, 1);
+  SSD1306_UpdateScreen(); //display
+  HAL_Delay (2000);
+
+
+
+
   //HAL_TIM_Base_Start_IT(&htim2);
 
-  init_fnd();
+//  init_fnd();
 
 
-  HAL_TIM_Base_Start_IT(&htim3);
+//  HAL_TIM_Base_Start_IT(&htim3);
 
- Ds18b20_Init();
-  Ds18b20_Init_Simple();
+// Ds18b20_Init();
+//  Ds18b20_Init_Simple();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
    while (1)
   {
+	   HAL_Delay (2000);
+	/*
 	    if(!isConverting()){
 	       StartConverting();
         }
@@ -143,6 +163,7 @@ float temper = 0.0;
 		  heaterControll(t_ON);
 	  }
 
+	     */
 	  //HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
 	  //HAL_Delay(2000);
 
