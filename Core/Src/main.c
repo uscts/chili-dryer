@@ -190,16 +190,17 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  SSD1306_InvertDisplay(1);
    while (1)
   {
 		  SSD1306_Clear();
 		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
 		  SSD1306_UpdateScreen();
 
-		 ;
 
 
-	//   HAL_Delay (2000);
+
+	  HAL_Delay (2000);
 	/*
 	    if(!isConverting()){
 	       StartConverting();
