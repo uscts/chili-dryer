@@ -1,6 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c \
- C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h \
- ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -26,18 +25,19 @@ Core/Src/main.o: ../Core/Src/main.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Src/fnd_controller.h \
+ ../Core/Inc/fnd_controller.h ../Core/Inc/main.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h \
- ../Core/Inc/heaterController.h ../Core/Inc/main.h \
+ ../Core/Inc/heaterController.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ssd1306.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/test.h \
  C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/bitmap.h \
- C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h
-C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h:
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h \
+ ../Core/Inc/g_var.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -65,15 +65,17 @@ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-../Core/Src/fnd_controller.h:
+../Core/Inc/fnd_controller.h:
+../Core/Inc/main.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h:
 ../Core/Inc/heaterController.h:
-../Core/Inc/main.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ssd1306.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/fonts.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/test.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/bitmap.h:
 C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/horse_anim.h:
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ojtube_log.h:
+../Core/Inc/g_var.h:

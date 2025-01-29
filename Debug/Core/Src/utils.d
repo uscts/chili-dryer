@@ -1,5 +1,6 @@
-Core/Src/stm32f1xx_it.o: ../Core/Src/stm32f1xx_it.c ../Core/Inc/main.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+Core/Src/utils.o: ../Core/Src/utils.c \
+ C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/utils.h \
+ ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -24,13 +25,8 @@ Core/Src/stm32f1xx_it.o: ../Core/Src/stm32f1xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/stm32f1xx_it.h ../Core/Inc/fnd_controller.h \
- ../Core/Inc/main.h \
- C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20.h \
- C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h \
- C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h \
- ../Core/Inc/heaterController.h ../Core/Inc/ex_var.h
+ ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/utils.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
@@ -58,11 +54,3 @@ Core/Src/stm32f1xx_it.o: ../Core/Src/stm32f1xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-../Core/Inc/stm32f1xx_it.h:
-../Core/Inc/fnd_controller.h:
-../Core/Inc/main.h:
-C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20.h:
-C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/onewire.h:
-C:/Users/choi/STM32CubeIDE/workspace_1.15.0/two/Core/Lib/Inc/ds18b20Config.h:
-../Core/Inc/heaterController.h:
-../Core/Inc/ex_var.h:

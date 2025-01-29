@@ -17,7 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <ojtube_log.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -32,12 +31,25 @@
 #include "bitmap.h"
 #include "horse_anim.h"
 #include "ojtube_log.h"
+//#include "utils.h"
+//#include "oledController.h"
+#include "g_var.h"
+//#include "buttonController.h"
+/* USER CODE END Includes */
+
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
 #include <stdio.h>
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+/*
+int _write(int file, char *p, int len){
+  HAL_UART_Transmit(&huart1, (uint8_t *)p, len, 10);
+  return len;
+}
+*/
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -54,6 +66,12 @@ TIM_HandleTypeDef htim3;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
+int _write(int file, char *p, int len){
+  HAL_UART_Transmit(&huart1, (uint8_t *)p, len, 10);
+  return len;
+}
+
+
 
 /* USER CODE END PV */
 
@@ -70,18 +88,19 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+/*
 int _write(int file, char *p, int len){
   HAL_UART_Transmit(&huart1, (uint8_t *)p, len, 10);
   return len;
 }
-
+*/
 /* USER CODE END 0 */
 
 /**
   * @brief  The application entry point.
   * @retval int
   */
+
 int main(void)
 {
 
@@ -197,16 +216,25 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //  SSD1306_InvertDisplay(1);
+
+
    while (1)
   {
+	   if(g_f_sw_up){
+		   printf("push sw_up\r\n");
+		   g_f_sw_up = 0;
+	   }
 
+	  // HAL_UART_Transmit(&huart1,senddata, strlen(senddata), 1000);
+	  HAL_Delay(10);
+/*
 if(HAL_GPIO_ReadPin(PB0_TEMP_SET_UP_GPIO_Port, PB0_TEMP_SET_UP_Pin)){
 	printf("1\r\n");
 }else{
 	printf("0\r\n");
 }
 HAL_Delay(10);
-
+*/
 	//printf("hello world!\r\n");
 	//HAL_Delay (1000);
 
@@ -518,7 +546,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : PB0_TEMP_SET_UP_Pin */
   GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(PB0_TEMP_SET_UP_GPIO_Port, &GPIO_InitStruct);
 
@@ -542,6 +570,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(PB6_LED1_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

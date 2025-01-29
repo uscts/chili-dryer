@@ -1,5 +1,5 @@
 Core/Src/fnd_controller.o: ../Core/Src/fnd_controller.c \
- ../Core/Src/fnd_controller.h ../Core/Inc/main.h \
+ ../Core/Inc/fnd_controller.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -26,7 +26,7 @@ Core/Src/fnd_controller.o: ../Core/Src/fnd_controller.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-../Core/Src/fnd_controller.h:
+../Core/Inc/fnd_controller.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 ../Core/Inc/stm32f1xx_hal_conf.h:
