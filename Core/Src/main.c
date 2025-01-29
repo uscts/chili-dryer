@@ -108,9 +108,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
- // MX_USART1_UART_Init();
- // MX_TIM2_Init();
- // MX_TIM3_Init();
+  MX_USART1_UART_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   SSD1306_Init();
@@ -178,7 +178,13 @@ int main(void)
   */
 
   //HAL_TIM_Base_Start_IT(&htim2);
-
+  //  SSD1306_InvertDisplay(1);
+ /*
+  SSD1306_Clear();
+		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
+		  SSD1306_UpdateScreen();
+          HAL_Delay (2000);
+                              */
 //  init_fnd();
 
 
@@ -190,17 +196,29 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  SSD1306_InvertDisplay(1);
+  //  SSD1306_InvertDisplay(1);
    while (1)
   {
-		  SSD1306_Clear();
+
+if(HAL_GPIO_ReadPin(PB0_TEMP_SET_UP_GPIO_Port, PB0_TEMP_SET_UP_Pin)){
+	printf("1\r\n");
+}else{
+	printf("0\r\n");
+}
+HAL_Delay(10);
+
+	//printf("hello world!\r\n");
+	//HAL_Delay (1000);
+
+	/*
+	   SSD1306_Clear();
 		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
 		  SSD1306_UpdateScreen();
+          HAL_Delay (2000);
+          */
 
 
 
-
-	  HAL_Delay (2000);
 	/*
 	    if(!isConverting()){
 	       StartConverting();
