@@ -85,6 +85,8 @@ void Error_Handler(void);
 #define PB5_RELAY_ON_OFF_CTRL_GPIO_Port GPIOB
 #define PB6_LED1_Pin GPIO_PIN_6
 #define PB6_LED1_GPIO_Port GPIOB
+#define PB7_LED1_Pin GPIO_PIN_7
+#define PB7_LED1_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

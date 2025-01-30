@@ -222,11 +222,13 @@ int main(void)
 	   if(g_f_sw_up){
 		   printf("push g_f_sw_up\r\n");
 		   g_f_sw_up = 0;
+		   HAL_GPIO_TogglePin(PB6_LED1_GPIO_Port, PB6_LED1_Pin);
 	   }
 
 	   if(g_f_sw_down){
 	   		   printf("push g_f_sw_down\r\n");
 	   		   g_f_sw_down = 0;
+	   		 HAL_GPIO_TogglePin(PB7_LED1_GPIO_Port, PB7_LED1_Pin);
 	   	}
 
 	   	if(g_f_sw_fix){
@@ -238,6 +240,7 @@ int main(void)
 		   			   g_f_sw_on = 0;
 		   	}
 
+	 	 HAL_Delay(10);
 /*
         if(HAL_GPIO_ReadPin(PB12_START_SW_PIN_GPIO_Port, PB12_START_SW_PIN_Pin)){
 
@@ -249,7 +252,7 @@ int main(void)
 
         */
 	  // HAL_UART_Transmit(&huart1,senddata, strlen(senddata), 1000);
-	  HAL_Delay(1000);
+	//  HAL_Delay(1000);
 /*
 if(HAL_GPIO_ReadPin(PB0_TEMP_SET_UP_GPIO_Port, PB0_TEMP_SET_UP_Pin)){
 	printf("1\r\n");
@@ -542,7 +545,8 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(PA3_TEMP_DATA_GPIO_Port, PA3_TEMP_DATA_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin|PB6_LED1_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin|PB6_LED1_Pin
+                          |PB7_LED1_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin, GPIO_PIN_RESET);
@@ -573,8 +577,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : FND_RCLK_Pin FND_DIO_Pin FND_SCLK_Pin */
-  GPIO_InitStruct.Pin = FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin;
+  /*Configure GPIO pins : FND_RCLK_Pin FND_DIO_Pin FND_SCLK_Pin PB6_LED1_Pin */
+  GPIO_InitStruct.Pin = FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin|PB6_LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
@@ -587,12 +591,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB6_LED1_Pin */
-  GPIO_InitStruct.Pin = PB6_LED1_Pin;
+  /*Configure GPIO pin : PB7_LED1_Pin */
+  GPIO_InitStruct.Pin = PB7_LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(PB6_LED1_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(PB7_LED1_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 9, 0);
