@@ -289,7 +289,7 @@ Ds18b20_Init_Simple();
 */
 
 
-	  /*
+/*
 	   if(g_f_sw_up){
 		   printf("push g_f_sw_up\r\n");
 		   g_f_sw_up = 0;
@@ -305,17 +305,21 @@ Ds18b20_Init_Simple();
 	   	if(g_f_sw_fix){
 	   			   printf("push g_f_sw_fix\r\n");
 	   			   g_f_sw_fix = 0;
+	   			HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
 	   	}
 	 	if(g_f_sw_on){
 		   			   printf("push g_f_sw_on\r\n");
 		   			   g_f_sw_on = 0;
+
 		 }
 
 
 
 
-	 	 HAL_Delay(10);
-	 	          	 	 */
+	 	 HAL_Delay(1000);
+
+*/
+
 /*
         if(HAL_GPIO_ReadPin(PB12_START_SW_PIN_GPIO_Port, PB12_START_SW_PIN_Pin)){
 
@@ -347,7 +351,7 @@ HAL_Delay(10);
           */
 
 
-
+/*
 
 	    if(!isConverting()){
 	       StartConverting();
@@ -371,9 +375,9 @@ HAL_Delay(10);
 		  heaterControll(t_ON);
 	  }
 
-
-	  //HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
-	  //HAL_Delay(2000);
+*/
+	 HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
+	 HAL_Delay(2000);
 
 	//  Ds18b20_ManualConvert();
 	//  digit4_replay((int)(ds18b20[0].Temperature * 10), 5000);
