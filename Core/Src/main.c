@@ -105,7 +105,7 @@ int main(void)
 
   /* USER CODE BEGIN 1 */
 
-//float temper = 0.0;
+float temper = 0.0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -190,26 +190,28 @@ int main(void)
   HAL_Delay(2000);
 
   SSD1306_InvertDisplay(0);  // normalize the display
-//
 
-  HAL_Delay(2000);
-  */
+
+  HAL_Delay(300);                       */
+
 
   //HAL_TIM_Base_Start_IT(&htim2);
   //  SSD1306_InvertDisplay(1);
- /*
+
+  /*
   SSD1306_Clear();
 		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
 		  SSD1306_UpdateScreen();
-          HAL_Delay (2000);
-                              */
-//  init_fnd();
+          HAL_Delay (300);
+*/
+
+init_fnd();
 
 
-//  HAL_TIM_Base_Start_IT(&htim3);
+HAL_TIM_Base_Start_IT(&htim3);
 
-// Ds18b20_Init();
-//  Ds18b20_Init_Simple();
+Ds18b20_Init();
+Ds18b20_Init_Simple();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -219,6 +221,75 @@ int main(void)
 
    while (1)
   {
+/*
+	   SSD1306_Clear();
+	  		  SSD1306_DrawBitmap(0,0,ojtubelog1,128,64,1);
+	  		  SSD1306_UpdateScreen();
+	            HAL_Delay (300);        */
+
+	            /*
+	   SSD1306_GotoXY (0,0);
+	   SSD1306_Puts ("CROP", &Font_11x18, 1);
+	   SSD1306_GotoXY (10, 30);
+	   SSD1306_Puts ("  DRYER :)", &Font_11x18, 1);
+	   SSD1306_UpdateScreen(); //display
+	   HAL_Delay (2000);
+
+
+	   SSD1306_GotoXY (0,0);
+	   SSD1306_Puts ("CROP", &Font_11x18, 1);
+	   SSD1306_GotoXY (10, 30);
+	   SSD1306_Puts ("  DRYER :)", &Font_11x18, 1);
+	   SSD1306_UpdateScreen(); //display
+
+	   HAL_Delay (2000);
+
+
+	   SSD1306_ScrollRight(0,7);  // scroll entire screen
+	   HAL_Delay(2000);  // 2 sec
+
+	   SSD1306_ScrollLeft(0,7);  // scroll entire screen
+	   HAL_Delay(2000);  // 2 sec
+
+	   SSD1306_Stopscroll();
+	   SSD1306_Clear();
+
+	   SSD1306_DrawBitmap(0,0,logo, 128, 64, 1);
+	   SSD1306_UpdateScreen();
+
+	   HAL_Delay(2000);
+
+	   SSD1306_ScrollRight(0x00, 0x0f);    // scroll entire screen right
+
+	   HAL_Delay (2000);
+
+	   SSD1306_ScrollLeft(0x00, 0x0f);  // scroll entire screen left
+
+	   HAL_Delay (2000);
+
+	   SSD1306_Scrolldiagright(0x00, 0x0f);  // scroll entire screen diagonal right
+
+	   HAL_Delay (2000);
+
+	   SSD1306_Scrolldiagleft(0x00, 0x0f);  // scroll entire screen diagonal left
+
+	   HAL_Delay (2000);
+
+	   SSD1306_Stopscroll();   // stop scrolling. If not done, screen will keep on scrolling
+
+
+	   SSD1306_InvertDisplay(1);   // invert the display
+
+	   HAL_Delay(2000);
+
+	   SSD1306_InvertDisplay(0);  // normalize the display
+
+
+	   HAL_Delay(300);
+*/
+
+
+	  /*
 	   if(g_f_sw_up){
 		   printf("push g_f_sw_up\r\n");
 		   g_f_sw_up = 0;
@@ -238,9 +309,13 @@ int main(void)
 	 	if(g_f_sw_on){
 		   			   printf("push g_f_sw_on\r\n");
 		   			   g_f_sw_on = 0;
-		   	}
+		 }
+
+
+
 
 	 	 HAL_Delay(10);
+	 	          	 	 */
 /*
         if(HAL_GPIO_ReadPin(PB12_START_SW_PIN_GPIO_Port, PB12_START_SW_PIN_Pin)){
 
@@ -273,15 +348,19 @@ HAL_Delay(10);
 
 
 
-	/*
+
 	    if(!isConverting()){
 	       StartConverting();
         }
 
         checkConverting();
+
        if(!isConverting()){
-        float temper = getTemper();
+         temper = getTemper();
         }
+
+       HAL_Delay(10);
+
 
 	Ds18b20_ManualConvert();
 
@@ -292,7 +371,7 @@ HAL_Delay(10);
 		  heaterControll(t_ON);
 	  }
 
-	     */
+
 	  //HAL_GPIO_TogglePin(PB5_RELAY_ON_OFF_CTRL_GPIO_Port, PB5_RELAY_ON_OFF_CTRL_Pin);
 	  //HAL_Delay(2000);
 
@@ -542,7 +621,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIO_LED_GPIO_Port, GPIO_LED_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(PA3_TEMP_DATA_GPIO_Port, PA3_TEMP_DATA_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, PA2_TEMP_DATA_Pin|PA3_TEMP_DATA_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin|PB6_LED1_Pin
@@ -564,12 +643,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIO_SW_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA3_TEMP_DATA_Pin */
-  GPIO_InitStruct.Pin = PA3_TEMP_DATA_Pin;
+  /*Configure GPIO pins : PA2_TEMP_DATA_Pin PA3_TEMP_DATA_Pin */
+  GPIO_InitStruct.Pin = PA2_TEMP_DATA_Pin|PA3_TEMP_DATA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(PA3_TEMP_DATA_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB0_TEMP_SET_UP_Pin PB1_TEMP_SET_FIX_Pin PB2_TEMP_SET_DOWN_Pin PB12_START_SW_PIN_GPIO_Port_Pin */
   GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin|PB1_TEMP_SET_FIX_Pin|PB2_TEMP_SET_DOWN_Pin|PB12_START_SW_PIN_GPIO_Port_Pin;

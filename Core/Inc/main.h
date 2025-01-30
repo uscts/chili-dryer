@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define GPIO_LED_GPIO_Port GPIOC
 #define GPIO_SW_Pin GPIO_PIN_0
 #define GPIO_SW_GPIO_Port GPIOA
+#define PA2_TEMP_DATA_Pin GPIO_PIN_2
+#define PA2_TEMP_DATA_GPIO_Port GPIOA
 #define PA3_TEMP_DATA_Pin GPIO_PIN_3
 #define PA3_TEMP_DATA_GPIO_Port GPIOA
 #define PB0_TEMP_SET_UP_Pin GPIO_PIN_0
