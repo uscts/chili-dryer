@@ -100,7 +100,6 @@ int _write(int file, char *p, int len){
   * @brief  The application entry point.
   * @retval int
   */
-
 int main(void)
 {
 
@@ -221,9 +220,26 @@ int main(void)
    while (1)
   {
 	   if(g_f_sw_up){
-		   printf("push sw_up\r\n");
+		   printf("push g_f_sw_up\r\n");
 		   g_f_sw_up = 0;
 	   }
+
+	   if(g_f_sw_down){
+	   		   printf("push g_f_sw_down\r\n");
+	   		   g_f_sw_down = 0;
+	   	}
+
+	   	if(g_f_sw_fix){
+	   			   printf("push g_f_sw_fix\r\n");
+	   			   g_f_sw_fix = 0;
+	   	}
+
+
+
+
+
+
+
 
 	  // HAL_UART_Transmit(&huart1,senddata, strlen(senddata), 1000);
 	  HAL_Delay(10);
@@ -544,11 +560,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(PA3_TEMP_DATA_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB0_TEMP_SET_UP_Pin */
-  GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin;
+  /*Configure GPIO pins : PB0_TEMP_SET_UP_Pin PB1_TEMP_SET_FIX_Pin PB2_TEMP_SET_DOWN_Pin */
+  GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin|PB1_TEMP_SET_FIX_Pin|PB2_TEMP_SET_DOWN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(PB0_TEMP_SET_UP_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : FND_RCLK_Pin FND_DIO_Pin FND_SCLK_Pin */
   GPIO_InitStruct.Pin = FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin;
@@ -572,8 +588,14 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(PB6_LED1_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI0_IRQn, 3, 0);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 9, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 9, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 9, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
