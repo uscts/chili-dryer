@@ -233,16 +233,22 @@ int main(void)
 	   			   printf("push g_f_sw_fix\r\n");
 	   			   g_f_sw_fix = 0;
 	   	}
+	 	if(g_f_sw_on){
+		   			   printf("push g_f_sw_fix\r\n");
+		   			   g_f_sw_on = 0;
+		   	}
 
 
+        if(HAL_GPIO_ReadPin(PB12_START_SW_PIN_GPIO_Port, PB12_START_SW_PIN_Pin)){
 
+        	   printf("1\r\n");
+        }else{
 
-
-
-
+               printf("0\r\n");
+        }
 
 	  // HAL_UART_Transmit(&huart1,senddata, strlen(senddata), 1000);
-	  HAL_Delay(10);
+	  HAL_Delay(1000);
 /*
 if(HAL_GPIO_ReadPin(PB0_TEMP_SET_UP_GPIO_Port, PB0_TEMP_SET_UP_Pin)){
 	printf("1\r\n");
@@ -565,6 +571,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB12_START_SW_PIN_Pin */
+  GPIO_InitStruct.Pin = PB12_START_SW_PIN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(PB12_START_SW_PIN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : FND_RCLK_Pin FND_DIO_Pin FND_SCLK_Pin */
   GPIO_InitStruct.Pin = FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin;
