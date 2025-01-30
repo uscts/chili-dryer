@@ -234,11 +234,11 @@ int main(void)
 	   			   g_f_sw_fix = 0;
 	   	}
 	 	if(g_f_sw_on){
-		   			   printf("push g_f_sw_fix\r\n");
+		   			   printf("push g_f_sw_on\r\n");
 		   			   g_f_sw_on = 0;
 		   	}
 
-
+/*
         if(HAL_GPIO_ReadPin(PB12_START_SW_PIN_GPIO_Port, PB12_START_SW_PIN_Pin)){
 
         	   printf("1\r\n");
@@ -247,6 +247,7 @@ int main(void)
                printf("0\r\n");
         }
 
+        */
 	  // HAL_UART_Transmit(&huart1,senddata, strlen(senddata), 1000);
 	  HAL_Delay(1000);
 /*
@@ -566,17 +567,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(PA3_TEMP_DATA_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0_TEMP_SET_UP_Pin PB1_TEMP_SET_FIX_Pin PB2_TEMP_SET_DOWN_Pin */
-  GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin|PB1_TEMP_SET_FIX_Pin|PB2_TEMP_SET_DOWN_Pin;
+  /*Configure GPIO pins : PB0_TEMP_SET_UP_Pin PB1_TEMP_SET_FIX_Pin PB2_TEMP_SET_DOWN_Pin PB12_START_SW_PIN_GPIO_Port_Pin */
+  GPIO_InitStruct.Pin = PB0_TEMP_SET_UP_Pin|PB1_TEMP_SET_FIX_Pin|PB2_TEMP_SET_DOWN_Pin|PB12_START_SW_PIN_GPIO_Port_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PB12_START_SW_PIN_Pin */
-  GPIO_InitStruct.Pin = PB12_START_SW_PIN_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(PB12_START_SW_PIN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : FND_RCLK_Pin FND_DIO_Pin FND_SCLK_Pin */
   GPIO_InitStruct.Pin = FND_RCLK_Pin|FND_DIO_Pin|FND_SCLK_Pin;
@@ -608,6 +603,9 @@ static void MX_GPIO_Init(void)
 
   HAL_NVIC_SetPriority(EXTI2_IRQn, 9, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 9, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
